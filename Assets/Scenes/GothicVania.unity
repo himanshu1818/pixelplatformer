@@ -324,7 +324,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 313552817}
-  - component: {fileID: 313552816}
   m_Layer: 0
   m_Name: _Gm
   m_TagString: Untagged
@@ -332,20 +331,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &313552816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313552815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48730ea9e3e5b3746a8d56be9cf61381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backGrounds: []
-  smooth: 1
 --- !u!4 &313552817
 Transform:
   m_ObjectHideFlags: 0
@@ -999,6 +984,36 @@ Transform:
   - {fileID: 1460064768}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &973448100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 973448101}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &973448101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973448100}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.14, y: -1.18, z: 13.100766}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2012292611}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1056242668
 GameObject:
@@ -1770,7 +1785,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1458977866}
-  - component: {fileID: 1458977865}
   m_Layer: 0
   m_Name: SkyBg 1
   m_TagString: Untagged
@@ -1778,20 +1792,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1458977865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458977864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f05462a2308f94db0c157e98e884e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  subject: {fileID: 0}
-  startZ: 0.3
 --- !u!4 &1458977866
 Transform:
   m_ObjectHideFlags: 0
@@ -2233,7 +2233,7 @@ GameObject:
   - component: {fileID: 1736189146}
   - component: {fileID: 1736189148}
   - component: {fileID: 1736189147}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4790,6 +4790,7 @@ GameObject:
   - component: {fileID: 2012292612}
   - component: {fileID: 2012292614}
   - component: {fileID: 2012292613}
+  - component: {fileID: 2012292615}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4809,7 +4810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1cd52c48f5fe48418980c692408bb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 3.12
+  playerSpeed: 8
 --- !u!95 &2012292609
 Animator:
   serializedVersion: 3
@@ -4890,7 +4891,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.3, y: -7.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 973448101}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4909,7 +4911,7 @@ Rigidbody2D:
   m_Mass: 2.56
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -4957,6 +4959,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.520196, y: 1.8584275}
   m_EdgeRadius: 0
+--- !u!114 &2012292615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012292607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a4b45f12800754fa721e93b69986d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 3
+  isGrounded: 0
+  point: {fileID: 973448101}
+  radiusOfCircle: 0.31
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &2013071683
 GameObject:
   m_ObjectHideFlags: 0
@@ -5292,5 +5313,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Parallax
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5400093178698510625, guid: 1114ea6de05733543b5a3eb8e0528ebd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1114ea6de05733543b5a3eb8e0528ebd, type: 3}
