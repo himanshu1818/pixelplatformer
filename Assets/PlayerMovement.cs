@@ -12,9 +12,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float playerSpeed;                         // speed of the player for movement 
    
-    float dirX;                                // the input that Input.GetaxisRaw will get so to decide which side player should move in x direction (i.e 1,0,-1)
+    float movementInputDirection;                                // the input that Input.GetaxisRaw will get so to decide which side player should move in x direction (i.e 1,0,-1)
 
-    private bool facingRight;                  // to check if the playter is facing right 
+    private bool isFacingRight;                  // to check if the playter is facing right 
+    [SerializeField]
+    private float jumpForce;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,31 +26,48 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         //playerSpeed = 5f;    
-        facingRight = true;
+        isFacingRight = true;
     }
     //we have written code separately for both jumping and flipping and flipping is here in this script and jumping will be in the next one
     // Update is called once per frame
     void Update()
     {
-        dirX = Input.GetAxisRaw("Horizontal");
-        // transform.position = new Vector2(transform.position.x + dirX, transform.position.y);
-        anim.SetFloat("speed", Mathf.Abs(dirX));
+        CheckInput();
+        Flip(movementInputDirection);
 
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(dirX * playerSpeed, rb.velocity.y) ;
-        Flip(dirX);
+        ApplyMovement();
+       
     }
 
     private void Flip(float horizontalValue)
     {
-       if(horizontalValue<0 && facingRight || horizontalValue >0 && !facingRight)
+       if(horizontalValue<0 && isFacingRight || horizontalValue >0 && !isFacingRight)
         {
-            facingRight = !facingRight;
+            isFacingRight = !isFacingRight;
             Vector3 scale = transform.localScale;
             scale.x *= -1;
             transform.localScale = scale;
         }
+    }
+    void CheckInput()
+    {
+        movementInputDirection = Input.GetAxisRaw("Horizontal");
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+    }
+
+    private void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+    }
+
+    void ApplyMovement()
+    {
+        rb.velocity = new Vector2(movementInputDirection * playerSpeed, rb.velocity.y);
     }
 }

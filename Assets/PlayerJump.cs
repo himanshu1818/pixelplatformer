@@ -26,12 +26,18 @@ public class PlayerJump : MonoBehaviour
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(point.position,radiusOfCircle,whatIsGround);
-        if(Input.GetButtonUp("Jump")&& isGrounded)
+        if(Input.GetButtonDown("Jump")&& isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            anim.SetTrigger("Jump");
+           // anim.SetTrigger("Jump");
+          
+        }
+        if (isGrounded)
+        {
+
         }
        
+
 
     }
     private void OnDrawGizmos()
