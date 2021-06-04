@@ -33,12 +33,15 @@ public class PlayerMovement : MonoBehaviour
     private bool isCrouching;
     private bool isHurting;
     private bool isCrouchSlashing;
+    private bool isJumpAttacking;
     [SerializeField]
     KeyCode keysForAttack;
     [SerializeField]
     KeyCode keysForCrouching;
     [SerializeField]
     KeyCode keysForCrouchSlashing;
+    [SerializeField]
+    KeyCode keysForJumpAttacking;
 
     // Start is called before the first frame update
     void Start()
@@ -106,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("isAttacking", isAttacking);
         anim.SetBool("isCrouching", isCrouching);
         anim.SetBool("isCrouchSlashing", isCrouchSlashing);
-
+        anim.SetBool("isJumpAttacking", isJumpAttacking);
     }
     //method to check if player ca attack if he's grounded or not and updating in UpdateAnimation() method 
     private void CheckIfCanAttack()
@@ -183,11 +186,21 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded)
         {
             isJumping = false;
+            isJumpAttacking = false;
         }
         //if the player is not grounded then isjumping must be true as player is already jumping andmust come to idle state and animation can be played 
         if (!isGrounded)
         {
             isJumping = true;
+            //if the player is jumping and then presses the key then he can attack too in jump 
+            if(Input.GetKey(keysForJumpAttacking)|| Input.GetKeyDown(keysForJumpAttacking))
+            {
+                isJumpAttacking = true;
+            }
+            else
+            {
+                isJumpAttacking = false;
+            }
         }
         if (amountOfLeft <= 0)
         {
@@ -203,8 +216,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         if (canJump)
-        {
-          
+        {         
            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             amountOfLeft--;
         }

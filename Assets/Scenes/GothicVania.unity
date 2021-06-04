@@ -5040,6 +5040,7 @@ MonoBehaviour:
   keysForAttack: 122
   keysForCrouching: 115
   keysForCrouchSlashing: 118
+  keysForJumpAttacking: 102
 --- !u!95 &2012292609
 Animator:
   serializedVersion: 3
