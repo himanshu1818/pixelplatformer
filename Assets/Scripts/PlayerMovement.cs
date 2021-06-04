@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public int amountOfJumps = 1;
     private int amountOfLeft;
     [Header("animations parameters for differnt states of player")]
-    private bool isJumping;
+    public bool isJumping;
     private bool isAttacking;
     private bool isCrouching;
     private bool isHurting;
@@ -165,14 +165,7 @@ public class PlayerMovement : MonoBehaviour
             isCrouchSlashing = false;
         }
     }
-    //private void CheckIfCanCrouchandSlash()
-    //{
-    //    if (Input.GetKeyDown(keysForCrouchSlashing) || Input.GetKey(keysForCrouchSlashing))
-    //    {
-    //        isCrouchSlashing = true;
-    //    }
-          
-    //}
+    
     //check for the player input if he can jump or not so to avoid double jumping
     private void CheckIfCanJump()
     {
