@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 8ec7b8d412230cc499c118c53c676993
+guid: 813df39fed30add479095d93c062c77a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7431487581426116177
-    second: gothic-hero-crouch-slash_0
+      213: -696797392561320841
+    second: gothic-hero-crouch-slash - Copy1_0
   - first:
-      213: 7652739867798081449
-    second: gothic-hero-crouch-slash_1
+      213: -6357111048533294097
+    second: gothic-hero-crouch-slash - Copy1_1
   - first:
-      213: 6220845209880826063
-    second: gothic-hero-crouch-slash_2
+      213: -7380880217516653923
+    second: gothic-hero-crouch-slash - Copy1_2
   - first:
-      213: -1895429728047655640
-    second: gothic-hero-crouch-slash_3
+      213: 2289499101205607411
+    second: gothic-hero-crouch-slash - Copy1_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gothic-hero-crouch-slash_0
+      name: gothic-hero-crouch-slash - Copy1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 80
-        height: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa99e5c1b6d0ed890800000000000000
-      internalID: -7431487581426116177
+      spriteID: 77cc6f7967a7456f0800000000000000
+      internalID: -696797392561320841
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gothic-hero-crouch-slash_1
+      name: gothic-hero-crouch-slash - Copy1_1
       rect:
         serializedVersion: 2
         x: 80
         y: 0
         width: 80
-        height: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9af03922d5ef33a60800000000000000
-      internalID: 7652739867798081449
+      spriteID: fe3467ace2107c7a0800000000000000
+      internalID: -6357111048533294097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gothic-hero-crouch-slash_2
+      name: gothic-hero-crouch-slash - Copy1_2
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 80
-        height: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc013a942c1e45650800000000000000
-      internalID: 6220845209880826063
+      spriteID: d9246393c88d19990800000000000000
+      internalID: -7380880217516653923
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gothic-hero-crouch-slash_3
+      name: gothic-hero-crouch-slash - Copy1_3
       rect:
         serializedVersion: 2
         x: 240
         y: 0
         width: 80
-        height: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 825110b64b412b5e0800000000000000
-      internalID: -1895429728047655640
+      spriteID: 3f3bfe06d4fe5cf10800000000000000
+      internalID: 2289499101205607411
       vertices: []
       indices: 
       edges: []

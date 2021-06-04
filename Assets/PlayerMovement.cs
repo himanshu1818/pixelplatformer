@@ -27,7 +27,18 @@ public class PlayerMovement : MonoBehaviour
     private float groundCheckRadius;
     public int amountOfJumps = 1;
     private int amountOfLeft;
+    [Header("animations parameters for differnt states of player")]
     private bool isJumping;
+    private bool isAttacking;
+    private bool isCrouching;
+    private bool isHurting;
+    private bool isCrouchSlashing;
+    [SerializeField]
+    KeyCode keysForAttack;
+    [SerializeField]
+    KeyCode keysForCrouching;
+    [SerializeField]
+    KeyCode keysForCrouchSlashing;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
         Flip(movementInputDirection);
         UpdateAnimations();
         CheckIfCanJump();
+        CheckIfCanAttack();
+        CheckIfCanCrouch();
 
     }
     private void FixedUpdate()
@@ -90,8 +103,73 @@ public class PlayerMovement : MonoBehaviour
     {
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isJumping", isJumping);
+        anim.SetBool("isAttacking", isAttacking);
+        anim.SetBool("isCrouching", isCrouching);
+        anim.SetBool("isCrouchSlashing", isCrouchSlashing);
 
     }
+    //method to check if player ca attack if he's grounded or not and updating in UpdateAnimation() method 
+    private void CheckIfCanAttack()
+    {
+        if(isGrounded && rb.velocity.y <= 0)
+        {
+            //check if the player has pressed the key for attacking assigned to the variable keysForAttack 
+            if (Input.GetKeyDown(keysForAttack) || Input.GetKey(keysForAttack))
+            {
+                isAttacking = true;
+            }
+            else
+            {
+                isAttacking = false;
+            }
+        }
+        if (!isGrounded)
+        {
+            isAttacking = false;
+        }
+    }
+    //method for finding out if the player can crouch or not based on the key pressed 
+    private void CheckIfCanCrouch()
+    {
+        if(isGrounded && rb.velocity.y <= 0)
+        {
+            //check if the player has pressed the key for croching only if he has pressed key and only if he's grounded
+            if(Input.GetKeyDown(keysForCrouching) || Input.GetKey(keysForCrouching))
+            {
+                isCrouching = true;
+               // CheckIfCanCrouchandSlash();
+                if (Input.GetKey(keysForCrouchSlashing))
+                {
+                    isCrouchSlashing = true;
+                    // isCrouching = false;
+                }
+                else
+                {
+                    isCrouchSlashing = false;
+                }
+               
+            }
+            else
+            {
+                isCrouching = false;
+                isCrouchSlashing = false;
+            }
+        }
+        //if isgrounded is false then player is not able to crouch i.e if he's in the air 
+        if (!isGrounded)
+        {
+            isCrouching = false;
+            isCrouchSlashing = false;
+        }
+    }
+    //private void CheckIfCanCrouchandSlash()
+    //{
+    //    if (Input.GetKeyDown(keysForCrouchSlashing) || Input.GetKey(keysForCrouchSlashing))
+    //    {
+    //        isCrouchSlashing = true;
+    //    }
+          
+    //}
     //check for the player input if he can jump or not so to avoid double jumping
     private void CheckIfCanJump()
     {
