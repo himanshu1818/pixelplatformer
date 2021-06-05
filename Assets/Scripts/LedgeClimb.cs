@@ -13,6 +13,9 @@ public class LedgeClimb : MonoBehaviour
     private bool isGrabbingEdge;
     private Animator myanim;
     private PlayerMovement player;
+    [SerializeField]
+    Transform offset;
+   
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -27,18 +30,20 @@ public class LedgeClimb : MonoBehaviour
         if(greenBox && !redBox && player.isJumping)
         {
             isGrabbingEdge = true;
-            // rb.velocity = new Vector2(0f, 0f);
+            //transform.position=new Vector2(transform.position.x,transform.position.y+2f);
+            // rb.AddForce(new Vector2(transform.position.x, transform.position.y + 2f),ForceMode2D.Impulse);
+            //player.GetComponent<BoxCollider2D>().offset = new Vector2(offset.position.x, offset.position.y);
             if (isGrabbingEdge)
             {
                 rb.velocity = new Vector2(0f, 0f);
                 rb.gravityScale = 0f;
             }
         }
-        if(!greenBox && player.isJumping)
+        if(!greenBox)
         {
             isGrabbingEdge = false;
             player.isJumping = false;
-            rb.gravityScale = 4;
+            rb.gravityScale = startingGravity;
         }
        
        
