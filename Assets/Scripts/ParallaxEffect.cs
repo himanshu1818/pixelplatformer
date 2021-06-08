@@ -5,62 +5,66 @@ using UnityEngine;
 public class ParallaxEffect : MonoBehaviour
 {
     //[SerializeField]
-    //Vector2 parallaxMultiplier;
-    //private Transform cameraTranform;
-    //private Vector3 lastCameraPosition;
-    //private float textureUnitSizex;
-    //private float textureUnitSizeY;
-    //private void Start()
+    //Vector2 parallaxmultiplier;
+    //[SerializeField]
+    //private Transform cameratranform;
+    //private Vector3 lastcameraposition;
+    //private float textureunitsizex;
+    //private float textureunitsizey;
+    //private void start()
     //{
-    //    cameraTranform = Camera.main.transform;
-    //    lastCameraPosition = cameraTranform.position;
+    //   // cameratranform = Camera.main.transform;
+    //    lastcameraposition = cameratranform.position;
     //    if (transform.childCount == 0)
     //    {
     //        Sprite spritex = GetComponent<SpriteRenderer>().sprite;
     //        Texture2D texturex = spritex.texture;
-    //        textureUnitSizex = texturex.width / spritex.pixelsPerUnit;
-    //        textureUnitSizeY = texturex.width / spritex.pixelsPerUnit;
+    //        textureunitsizex = texturex.width / spritex.pixelsPerUnit;
+    //        textureunitsizey = texturex.width / spritex.pixelsPerUnit;
     //    }
     //    else
     //    {
-    //        Sprite sprite = transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
-    //        Texture2D texture = sprite.texture;
-    //        textureUnitSizex = texture.width / sprite.pixelsPerUnit;
-    //        textureUnitSizeY = texture.width / sprite.pixelsPerUnit;
+    //        Sprite spritex = GetComponent<SpriteRenderer>().sprite;
+    //        Texture2D texturex = spritex.texture;
+    //        textureunitsizex = texturex.width / spritex.pixelsPerUnit;
+    //        textureunitsizey = texturex.width / spritex.pixelsPerUnit;
     //    }
 
     //}
     //private void LateUpdate()
     //{
-    //    Vector3 deltaMovement = cameraTranform.position - lastCameraPosition;
-    //    transform.position = new Vector3(deltaMovement.x * parallaxMultiplier.x, deltaMovement.y * parallaxMultiplier.y);
-    //    lastCameraPosition = cameraTranform.position;
-    //    if (Mathf.Abs(cameraTranform.position.x - transform.position.x) >= textureUnitSizex)
+    //    Vector3 deltamovement = cameratranform.position - lastcameraposition;
+    //    transform.position = new Vector3(deltamovement.x * parallaxmultiplier.x, deltamovement.y * parallaxmultiplier.y);
+    //    lastcameraposition = cameratranform.position;
+    //    if (Mathf.Abs(cameratranform.position.x - transform.position.x) >= textureunitsizex)
     //    {
-    //        float offesetPsotionX = (cameraTranform.position.x - transform.position.x) % textureUnitSizex;
-    //        transform.position = new Vector3(cameraTranform.position.x + offesetPsotionX, transform.position.y);
+    //        float offesetpsotionx = (cameratranform.position.x - transform.position.x) % textureunitsizex;
+    //        transform.position = new Vector3(cameratranform.position.x + offesetpsotionx, transform.position.y);
 
     //    }
-    //    if (Mathf.Abs(cameraTranform.position.y - transform.position.y) >= textureUnitSizeY)
+    //    if (Mathf.Abs(cameratranform.position.y - transform.position.y) >= textureunitsizey)
     //    {
-    //        float offesetPsotionY = (cameraTranform.position.y - transform.position.y) % textureUnitSizeY;
-    //        transform.position = new Vector3(cameraTranform.position.y + offesetPsotionY, transform.position.y);
+    //        float offesetpsotiony = (cameratranform.position.y - transform.position.y) % textureunitsizey;
+    //        transform.position = new Vector3(cameratranform.position.y + offesetpsotiony, transform.position.y);
 
 
     //    }
     //}
     private float startingPosition;
     private float size;
+    private float sizey;
     public GameObject camera;
     public float speed;
+    public bool horizontal;
+    public bool vertical;
     private void Start()
     {
-       
-            size = GetComponent<SpriteRenderer>().bounds.size.x;
-           // size = transform.localScale.x;
-       
-       
-        
+
+        size = GetComponent<SpriteRenderer>().bounds.size.x;
+        // size = transform.localScale.x;
+
+        sizey = GetComponent<SpriteRenderer>().bounds.size.y;
+
         startingPosition = transform.position.x;
     }
 
@@ -68,15 +72,25 @@ public class ParallaxEffect : MonoBehaviour
     {
         var tempSpeed = camera.transform.position.x * (1 - speed);
         var distance = camera.transform.position.x * speed;
+        var tempSpeedy = camera.transform.position.y * (1 - speed);
+        var distancey = camera.transform.position.y * speed;
         transform.position = new Vector3(startingPosition + distance, transform.position.y, transform.position.z);
-        if (tempSpeed > startingPosition + size )
+        if (horizontal)
+      {
+            if (tempSpeed > startingPosition + size / 2)
+            {
+                startingPosition += size;
+            }
+            else if (tempSpeed < startingPosition - size / 2)
+            {
+                startingPosition -= size;
+            }
+      }
+        if (vertical)
         {
-            startingPosition += size;
+            transform.position = new Vector3(transform.position.x, camera.transform.position.y, transform.position.z);
         }
-        else if (tempSpeed < startingPosition - size )
-        {
-            startingPosition -= size;
-        }
+
     }
 
 
